@@ -25,9 +25,9 @@ const articles = ref<Article[]>([])
 const loading = ref(true)
 const apiKey = '1b93aec0e1f44e2c9baf112fc2ed5332'
 
-const fetchNews = async (searchTerm: string = 'sports') => {
+const fetchNews = async (searchTerm: string = 'sports', sortBy: string = 'publishedAt') => {
   loading.value = true
-  const endpoint = `https://newsapi.org/v2/everything?language=ru&q=${searchTerm}&apiKey=${apiKey}`
+  const endpoint = `https://newsapi.org/v2/everything?language=ru&q=${searchTerm}&sortBy=${sortBy}&apiKey=${apiKey}`
   try {
     const response = await fetch(endpoint)
     if (!response.ok) {
@@ -42,8 +42,8 @@ const fetchNews = async (searchTerm: string = 'sports') => {
   }
 }
 
-function handleSearch(searchTerm: string) {
-  fetchNews(searchTerm)
+function handleSearch({ query, sortBy }: { query: string; sortBy: string }) {
+  fetchNews(query, sortBy)
 }
 
 onMounted(() => {

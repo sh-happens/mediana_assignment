@@ -46,9 +46,11 @@
               Sort by
             </a>
             <ul class="dropdown-menu">
-              <li class="dropdown-item" value="relevancy">Relevancy</li>
-              <li class="dropdown-item" value="popularity">Popularity</li>
-              <li class="dropdown-item" value="publishedAt">Publishing date</li>
+              <li @click="selectSortOption('relevancy')" class="dropdown-item">Relevancy</li>
+              <li @click="selectSortOption('popularity')" class="dropdown-item">Popularity</li>
+              <li @click="selectSortOption('publishedAt')" class="dropdown-item">
+                Publishing date
+              </li>
             </ul>
           </li>
         </ul>
@@ -71,9 +73,14 @@
 import { ref, defineEmits } from 'vue'
 
 const searchQuery = ref('')
+const selectedSort = ref('publishedAt')
 const emits = defineEmits(['search'])
 
 const submitSearch = () => {
-  emits('search', searchQuery.value)
+  emits('search', { query: searchQuery.value, sortBy: selectedSort.value })
+}
+
+const selectSortOption = (option: string) => {
+  selectedSort.value = option
 }
 </script>
