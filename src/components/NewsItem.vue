@@ -13,8 +13,8 @@
     <div v-else>
       <PlaceholderImage />
     </div>
-    <h3>{{ article.title }}</h3>
-    <p>{{ article.summary }}</p>
+    <h6>{{ article.title }}</h6>
+    <p>{{ article.description }}</p>
   </div>
 </template>
 
@@ -25,7 +25,7 @@ import PlaceholderImage from './PlaceholderImage.vue'
 interface Article {
   id: number
   title: string
-  summary: string
+  description: string
   urlToImage?: string
 }
 

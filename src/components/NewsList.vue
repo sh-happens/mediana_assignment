@@ -13,7 +13,8 @@ import NewsItem from './NewsItem.vue'
 interface Article {
   id: number
   title: string
-  summary: string
+  description: string
+  urlToImage?: string
 }
 
 const props = defineProps<{

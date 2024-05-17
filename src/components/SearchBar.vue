@@ -28,19 +28,52 @@
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              Dropdown
+              Author
             </a>
             <ul class="dropdown-menu">
-              <router-link class="dropdown-item" to="/action">Action</router-link>
-              <router-link class="dropdown-item" to="/another-action">Another action</router-link>
+              <li class="dropdown-item" to="/action">Action</li>
+              <li class="dropdown-item" to="/another-action">Another action</li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Sort by
+            </a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item" value="relevancy">Relevancy</li>
+              <li class="dropdown-item" value="popularity">Popularity</li>
+              <li class="dropdown-item" value="publishedAt">Publishing date</li>
             </ul>
           </li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+        <form class="d-flex" role="search" @submit.prevent="submitSearch">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+            v-model="searchQuery"
+          />
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>
     </div>
   </nav>
 </template>
+
+<script setup lang="ts">
+import { ref, defineEmits } from 'vue'
+
+const searchQuery = ref('')
+const emits = defineEmits(['search'])
+
+const submitSearch = () => {
+  emits('search', searchQuery.value)
+}
+</script>
