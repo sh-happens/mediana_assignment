@@ -21,15 +21,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import PlaceholderImage from './PlaceholderImage.vue'
+import type { Article } from '@/types/types'
 
-interface Article {
-  id: number
-  title: string
-  description: string
-  urlToImage?: string
-}
-
-const props = defineProps<{
+defineProps<{
   article: Article
 }>()
 

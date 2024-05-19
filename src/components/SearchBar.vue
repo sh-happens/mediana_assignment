@@ -72,7 +72,7 @@
 <script setup lang="ts">
 import { ref, defineEmits } from 'vue'
 
-const searchQuery = ref('')
+const searchQuery = ref('sports')
 const selectedSort = ref('publishedAt')
 const emits = defineEmits(['search'])
 
