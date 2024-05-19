@@ -1,15 +1,19 @@
 <template>
   <div class="container text-center">
     <div class="row row-cols-3">
-      <NewsItem v-for="article in newsStore.articles" :key="article.id" :article="article" />
+      <NewsItem v-for="article in articles" :key="article.id" :article="article" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { useNewsStore } from '@/stores/newsStore'
+import { defineProps } from 'vue'
 import NewsItem from './NewsItem.vue'
-const newsStore = useNewsStore()
+import type { Article } from '@/types/types'
+
+defineProps<{
+  articles: Article[]
+}>()
 </script>
 
 <style scoped></style>

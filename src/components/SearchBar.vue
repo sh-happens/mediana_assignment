@@ -31,8 +31,15 @@
               Author
             </a>
             <ul class="dropdown-menu">
-              <li class="dropdown-item" to="/action">Action</li>
-              <li class="dropdown-item" to="/another-action">Another action</li>
+              <li @click="selectAuthor()" class="dropdown-item">All</li>
+              <li
+                v-for="author in uniqueAuthors"
+                :key="author"
+                @click="selectAuthor(author)"
+                class="dropdown-item"
+              >
+                {{ author }}
+              </li>
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -70,13 +77,35 @@
 </template>
 
 <script setup lang="ts">
-import { ref, defineEmits } from 'vue'
+import { useNewsStore } from '@/stores/newsStore'
+import { ref, defineEmits, computed } from 'vue'
+
+const newsStore = useNewsStore()
+
+const uniqueAuthors = computed(() => {
+  const authors = newsStore.articles.map((article) => article.author).filter(Boolean)
+  return Array.from(new Set(authors))
+})
+
+const selectedAuthor = ref('')
+
+const emits = defineEmits(['search', 'authorSelected'])
+
+const selectAuthor = (author?: string) => {
+  if (!author) {
+    selectedAuthor.value = ''
+    emits('authorSelected', '')
+    return
+  }
+  selectedAuthor.value = author
+  emits('authorSelected', author)
+}
 
 const searchQuery = ref('sports')
 const selectedSort = ref('publishedAt')
-const emits = defineEmits(['search'])
 
 const submitSearch = () => {
+  emits('authorSelected', '')
   emits('search', { query: searchQuery.value, sortBy: selectedSort.value })
 }
 
