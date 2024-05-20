@@ -1,8 +1,7 @@
 <template>
   <div class="home">
-    <h1>Latest News</h1>
     <SearchBar @search="handleSearch" @authorSelected="handleAuthorSelected" />
-    <div v-if="newsStore.loading">Loading...</div>
+    <div v-if="newsStore.loading">Загрузка...</div>
     <div v-else>
       <NewsList :articles="filteredArticles" />
     </div>

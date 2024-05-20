@@ -2,7 +2,7 @@
   <div v-if="isOpen" class="modal-mask">
     <div class="modal-wrapper">
       <div class="modal-container" ref="target">
-        <div class="modal-header">
+        <div>
           <slot name="header"> default header </slot>
         </div>
         <div class="modal-body">
