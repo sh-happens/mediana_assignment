@@ -8,13 +8,6 @@
         <div class="modal-body">
           <slot name="content"> default content </slot>
         </div>
-        <div class="modal-footer">
-          <slot name="footer">
-            <div>
-              <button @click.stop="emit('modal-close')">Submit</button>
-            </div>
-          </slot>
-        </div>
       </div>
     </div>
   </div>
@@ -51,5 +44,14 @@ onClickOutside(target, () => emit('modal-close'))
   background-color: #fff;
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+}
+
+@media (max-width: 575.98px) {
+  .modal-container {
+    width: 100%;
+    margin-top: 20vh;
+    padding: 10px 15px;
+    border-radius: 2px;
+  }
 }
 </style>

@@ -1,13 +1,17 @@
 <template>
-  <div class="container text-center">
-    <div class="row row-cols-3">
-      <NewsItem v-for="article in articles" :key="article.id" :article="article" />
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-6 col-lg-4" v-for="article in articles" :key="article.id">
+        <NewsItem :article="article" />
+      </div>
     </div>
-    <div class="d-flex w-100 justify-content-center my-3">
-      <nav>
-        <ul class="pagination">
+    <div class="d-flex justify-content-center my-3">
+      <nav aria-label="Page navigation">
+        <ul class="pagination pagination-sm">
           <li class="page-item" :class="{ disabled: newsStore.currentPage <= 1 }">
-            <a class="page-link" href="#" @click="changePage(newsStore.currentPage - 1)">&laquo;</a>
+            <a class="page-link" href="#" @click="changePage(newsStore.currentPage - 1)">
+              &laquo;
+            </a>
           </li>
           <li
             class="page-item"
@@ -21,7 +25,9 @@
             class="page-item"
             :class="{ disabled: newsStore.currentPage >= newsStore.totalPages }"
           >
-            <a class="page-link" href="#" @click="changePage(newsStore.currentPage + 1)">&raquo;</a>
+            <a class="page-link" href="#" @click="changePage(newsStore.currentPage + 1)">
+              &raquo;
+            </a>
           </li>
         </ul>
       </nav>
@@ -49,4 +55,16 @@ defineProps<{
 }>()
 </script>
 
-<style scoped></style>
+<style scoped>
+.pagination {
+  flex-wrap: wrap;
+}
+
+.page-link {
+  padding: 0.25rem 0.5rem;
+}
+
+.col-12.col-md-6.col-lg-4 {
+  margin-bottom: 1rem;
+}
+</style>
