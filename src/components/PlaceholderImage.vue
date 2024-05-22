@@ -5,6 +5,10 @@
 </template>
 
 <style scoped>
+.placeholder-image {
+  display: flex;
+  justify-content: center;
+}
 .placeholder-image img {
   width: 50%;
   height: auto;

@@ -26,7 +26,7 @@
         class="img-fluid"
         v-if="!imageError"
       />
-      <PlaceholderImage v-if="imageError" class="img-fluid" />
+      <PlaceholderImage v-if="imageError" />
     </template>
     <template #content>
       <h5>{{ article.title }}</h5>
