@@ -15,10 +15,12 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <router-link class="nav-link active" to="/" aria-current="page">Home</router-link>
+            <router-link class="nav-link active" to="/" aria-current="page"
+              >Домашняя страница</router-link
+            >
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/about">About</router-link>
+            <router-link class="nav-link" to="/about">О нас</router-link>
           </li>
           <li class="nav-item dropdown">
             <a
@@ -28,10 +30,10 @@
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              Author
+              Фильтрация по авторам
             </a>
             <ul class="dropdown-menu">
-              <li @click="selectAuthor()" class="dropdown-item">All</li>
+              <li @click="selectAuthor()" class="dropdown-item">Все</li>
               <li
                 v-for="author in uniqueAuthors"
                 :key="author"
@@ -50,13 +52,13 @@
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              Sort by
+              Сортировка
             </a>
             <ul class="dropdown-menu">
-              <li @click="selectSortOption('relevancy')" class="dropdown-item">Relevancy</li>
-              <li @click="selectSortOption('popularity')" class="dropdown-item">Popularity</li>
+              <li @click="selectSortOption('relevancy')" class="dropdown-item">По релевантности</li>
+              <li @click="selectSortOption('popularity')" class="dropdown-item">По популярности</li>
               <li @click="selectSortOption('publishedAt')" class="dropdown-item">
-                Publishing date
+                По дате публикации
               </li>
             </ul>
           </li>
@@ -69,7 +71,7 @@
             aria-label="Search"
             v-model="searchQuery"
           />
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <button class="btn btn-outline-success" type="submit">Поиск</button>
         </form>
       </div>
     </div>

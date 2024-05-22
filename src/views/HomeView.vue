@@ -1,7 +1,13 @@
 <template>
-  <div class="home">
+  <div>
     <SearchBar @search="handleSearch" @authorSelected="handleAuthorSelected" />
-    <div v-if="newsStore.loading">Загрузка...</div>
+    <div v-if="newsStore.loading">
+      <div class="d-flex justify-content-center mt-5">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    </div>
     <div v-else>
       <NewsList :articles="filteredArticles" />
     </div>
